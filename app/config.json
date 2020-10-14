@@ -1,0 +1,40 @@
+{
+  "country_code": "BE",
+  "party_id": "BEC",
+  "locations": [
+    {
+      "id": "LOC1",
+      "name": "Gent Zuid",
+      "address": "F.Rooseveltlaan 3A",
+      "city": "Gent",
+      "postal_code": "9000",
+      "country": "BEL",
+      "coordinates": {
+        "latitude": "3.729944",
+        "longitude": "51.047599"
+      },
+      "evses_uid": "3256",
+      "evse_id": "BE*BEC*E041503003",
+      "connectors_id": "1",
+      "connectors_standard": "IEC_62196_T2",
+      "connectors_format": "SOCKET",
+      "connectors_power_type": "AC_1_PHASE"
+    }
+  ],
+  "currency": "EUR",
+  "vat": "0.25",
+  "tariffs": [{
+    "id": "12",
+    "elements": [{
+      "price_components": [{
+        "type": "TIME",
+        "price": 2.00,
+        "vat": 10.0,
+        "step_size": 300
+      }]
+    }]
+  }],
+  "simulator": {
+    "back": "24h"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "ocpi-cpo-sim-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markusbjorne/ocpi-cpo-sim-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markusbjorne/ocpi-cpo-sim-backend/issues"
+  },
+  "homepage": "https://github.com/markusbjorne/ocpi-cpo-sim-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "serverless-http": "^2.6.0"
+  },
+  "devDependencies": {}
+}
