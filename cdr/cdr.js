@@ -37,3 +37,7 @@ const createCdr = (cdrToken, location_id, startDate, endDate ) => {
     last_updated: '2015-06-29T22:01:13Z'
    }
 }
+
+module.exports = {
+  createCdr
+} 

@@ -1,6 +1,6 @@
-const fs = require('fs');
+const AWS = require("aws-sdk");
 
-const createSimulatedSession = (req, res) => {
+const createSimulatedSession = async (req, res) => {
 
   const { cdr_token, location_id } = req.body;
 
@@ -11,7 +11,7 @@ const createSimulatedSession = (req, res) => {
     location_id;
 
   if (validInput) {
-    triggerSimulatedSession();
+    await triggerSimulatedSession(cdr_token, location_id);
     res.send({ message: `Session started at location, id: ${location_id}`}); 
   } else {
     console.log(`Invalid input: ${cdr_token}, ${location_id}`)
@@ -19,9 +19,24 @@ const createSimulatedSession = (req, res) => {
   }
 }
 
-const triggerSimulatedSession = async () => {
+const triggerSimulatedSession = async (cdrToken, locationId) => {
 
   console.log('Triggering simulated session');
+
+  const lambda = new AWS.Lambda();
+  
+  const params = {
+    FunctionName: "ocpi-cpo-sim-backend-dev-createCdr",
+    InvocationType: "RequestResponse",
+    Payload: JSON.stringify({ status: "created", cdrToken, locationId })
+  };
+  
+  console.log("Lambda invoking...");
+
+  const result = await lambda.invoke(params).promise();
+  console.log("Lambda invoke, result: " + result);
+
+};
 
 /*   
 | Property | Description | 
@@ -31,9 +46,6 @@ const triggerSimulatedSession = async () => {
 | INVALID   | The session is declared invalid and will not be billed. | 
 | PENDING   | The session is pending and has not yet started. This is the initial state. 
 */
-
-} 
-
 
 module.exports = {
   createSimulatedSession,
